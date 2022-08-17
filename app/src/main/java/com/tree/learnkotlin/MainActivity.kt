@@ -3,6 +3,8 @@ package com.tree.learnkotlin
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.view.View
+import android.widget.TextView
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -23,6 +25,18 @@ class MainActivity : AppCompatActivity() {
         val p= Person("dat",20)
         p.age=10
         Log.d("whs"," log adult:{${p.isAdult}}")
+
+        val l="laoliu".lastElement()
+        var name="whs"
+        var r=name.lastElement
+        Log.d("whs","1r:{$r}")
+        name = "whswh"
+        r=name.lastElement
+        Log.d("whs","2r:{$r}")
+        var tv=TextView(this)
+        tv.setOnClickListener {v:View ->
+                print("aa")
+        }
     }
 
 
