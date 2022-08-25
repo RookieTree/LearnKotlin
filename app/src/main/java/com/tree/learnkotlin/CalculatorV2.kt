@@ -11,6 +11,11 @@ import kotlin.system.exitProcess
  *  @创建时间:  2022/7/27 17:37
  *  @描述：    TODO
  */
+@Deprecated(
+    message = "use CalculatorV3 instead",
+    replaceWith = ReplaceWith("CalculatorV3"),
+    level = DeprecationLevel.ERROR
+)
 class CalculatorV2 {
     val help = """
 -----------------------------------
@@ -38,9 +43,9 @@ class CalculatorV2 {
             exitProcess(0)
         }
         val exp = parseExpression(input) ?: return null
-        val left=exp.left
-        val opt=exp.opt
-        val right=exp.right
+        val left = exp.left
+        val opt = exp.opt
+        val right = exp.right
         return when (opt) {
             Operation.ADD -> addString(left, right)
             Operation.MINUS -> minusString(left, right)
