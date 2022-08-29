@@ -12,6 +12,7 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+        System.setProperty("kotlinx.coroutines.debug", "on")
        /* for (i in 1..3) {
             if (i==2){
                 Log.d("whs"," break loop")
