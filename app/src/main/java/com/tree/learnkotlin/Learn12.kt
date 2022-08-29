@@ -3,6 +3,7 @@ package com.tree.learnkotlin
 import com.google.gson.Gson
 import okhttp3.OkHttpClient
 import okhttp3.Request
+import java.lang.Exception
 import java.lang.reflect.InvocationHandler
 import java.lang.reflect.Method
 import java.lang.reflect.Proxy
@@ -152,3 +153,4 @@ fun main() {
     val data2: String = api2.search(id = "JetBrains")
     print(data2)*/
 }
+
