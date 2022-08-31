@@ -6,6 +6,9 @@ import android.util.Log
 import android.view.View
 import android.widget.TextView
 import android.widget.Toast
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.runBlocking
 
 class MainActivity : AppCompatActivity() {
 
@@ -13,37 +16,21 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         System.setProperty("kotlinx.coroutines.debug", "on")
-       /* for (i in 1..3) {
-            if (i==2){
-                Log.d("whs"," break loop")
-                return
-            }
-            Log.d("whs"," loop $i")
+        findViewById<TextView>(R.id.textview).setOnClickListener(){
+            Toast.makeText(baseContext, "Debug", Toast.LENGTH_SHORT).show()
         }
-        Log.d("whs"," break finish")*/
-        listOf(1, 2, 3, 4, 5).forEach {
-            if (it == 3) return@forEach // 局部返回到该 lambda 表达式的调用者，即 forEach 循环
-            Log.d("whs"," loop $it")
-        }
-        val p= Person("dat",20)
-        p.age=10
-        Log.d("whs"," log adult:{${p.isAdult}}")
-
-        val l="laoliu".lastElement()
-        var name="whs"
-        var r=name.lastElement
-        Log.d("whs","1r:{$r}")
-        name = "whswh"
-        r=name.lastElement
-        Log.d("whs","2r:{$r}")
-        var tv=TextView(this)
-        tv.setOnClickListener {v:View ->
-                print("aa")
+        runBlocking {
+            startJob()
         }
     }
 
-
-    class Person(val name: String, var age: Int) {
-        var isAdult = age >= 18
+    suspend fun startJob() = runBlocking {
+        val job = launch {
+            logX("First coroutine start!")
+            delay(10000L)
+            logX("First coroutine end!")
+        }
+        job.join()
     }
+
 }
