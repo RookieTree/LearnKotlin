@@ -73,7 +73,7 @@ Get4
 
 
 // 看不懂代码没关系，目前咱们只需要关心代码的执行结果
-fun main2() = runBlocking {
+fun main3() = runBlocking {
     val sequence = getSequence()
     printSequence(sequence)
 }
